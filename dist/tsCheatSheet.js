@@ -269,4 +269,45 @@ function moveAnime(animal) {
 }
 moveAnime({ type: "bird", flyingSpeed: 100 });
 moveAnime({ type: "horse", runningSpeed: 70 });
+/**
+ * Type Casting
+ * *Type Casting => manually tell TS what type of value we have.
+ *
+ * ?exclamation mark (!) => the expression in front of it will never yield null.
+ *
+ * TODO: 2 ways to do type casting.
+ */
+// const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+// const userInputElement = document.getElementById("user-input")! as HTMLInputElement;
+// ?if we don't know the type of the element.
+const userInputElement = document.getElementById("user-input");
+if (userInputElement)
+    userInputElement.value = "Hi there!";
+const errors = {
+    email: 'Not a valid email!',
+    username: 'Must start with a character!'
+};
+function combine(a, b) {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString();
+    }
+    return a + b;
+}
+const result = combine('Smart', ' Cards');
+result.split(' ');
+/**
+ * Optional Chaining
+ * TODO: add Question Mark(?) after the property name.
+ * *optional chaining => allows us to check if a property exists before accessing it.
+ * ?helps us to safely access nested properties and nested Objects.
+ */
+// console.log(fetchedData?.item?.count);
+/**
+ * Nullish Coalescing | Nullish Data => double Question Mark(??)
+ * *Nullish Coalescing => allows us to specify a default value if a property is null or undefined.
+ * ?helps us to deal with nullish values.
+*/
+const userInput = undefined;
+const storedData = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
+console.log(storedData);
 //# sourceMappingURL=tsCheatSheet.js.map

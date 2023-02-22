@@ -414,3 +414,69 @@ function moveAnime(animal: Animal) {
 }
 moveAnime({ type: "bird", flyingSpeed: 100 });
 moveAnime({ type: "horse", runningSpeed: 70 });
+
+/**
+ * Type Casting
+ * *Type Casting => manually tell TS what type of value we have.
+ *
+ * ?exclamation mark (!) => the expression in front of it will never yield null.
+ *
+ * TODO: 2 ways to do type casting.
+ */
+
+// const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+// const userInputElement = document.getElementById("user-input")! as HTMLInputElement;
+
+// ?if we don't know the type of the element.
+const userInputElement = document.getElementById("user-input");
+if (userInputElement) (userInputElement as HTMLInputElement).value = "Hi there!";
+
+
+/**
+ * Index Properties
+ * 
+ * *Index Properties => allow us to create flexible objects.
+*/
+interface ErrorContainer { 
+  [prop: string]: string;
+}
+const errors: ErrorContainer = {
+  email: 'Not a valid email!',
+  username: 'Must start with a character!'
+}
+
+/**
+ * Function Overloads
+ * *function overloads => allow us to define multiple function signatures.
+*/
+
+function combine(a: number, b: number): number;
+function combine(a: string, b: string): string;
+function combine(a: Combinable, b: Combinable): Combinable {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+
+const result = combine('Smart', ' Cards');
+result.split(' ');
+
+/**
+ * Optional Chaining 
+ * TODO: add Question Mark(?) after the property name.
+ * *optional chaining => allows us to check if a property exists before accessing it. 
+ * ?helps us to safely access nested properties and nested Objects.
+ */
+// console.log(fetchedData?.item?.count);
+
+
+/** 
+ * Nullish Coalescing | Nullish Data => double Question Mark(??)
+ * *Nullish Coalescing => allows us to specify a default value if a property is null or undefined.
+ * ?helps us to deal with nullish values.
+*/
+
+const userInput = undefined;
+const storedData = userInput ?? 'DEFAULT';
+console.log(storedData);
